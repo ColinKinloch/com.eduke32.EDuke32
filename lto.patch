@@ -1,0 +1,31 @@
+diff --git a/GNUmakefile b/GNUmakefile
+index efacbde9d..8d6988bb1 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -752,7 +752,7 @@ $$($1_$2)$$(EXESUFFIX): $$(foreach i,$(call getdeps,$1,$2),$$(call expandobjs,$$
+ 	$$(LINK_STATUS)
+ 	$$(call MKDIR,"$$(obj)/$$($1_$2)")
+ ifeq ($$(LLD),0)
+-	$$(eval override LF := -save-temps=obj -dumpdir $$(obj)/$$($1_$2))
++	$$(eval override LF :=)
+ else
+ 	$$(eval override LF :=)
+ endif
+@@ -792,7 +792,7 @@ libklzw$(DLLSUFFIX): $(engine_src)/klzw.cpp
+ 	$(LINK_STATUS)
+ 	$(call MKDIR,"$(tools_obj)/$*")
+ ifeq ($(LLD),0)
+-	$(eval override LF := -save-temps=obj -dumpdir $(tools_obj)/$*)
++	$(eval override LF :=)
+ else
+ 	$(eval override LF :=)
+ endif
+@@ -808,7 +808,7 @@ endif
+ $(voidwrap_lib): $(foreach i,$(voidwrap),$(call expandobjs,$i))
+ 	$(LINK_STATUS)
+ ifeq ($(LLD),0)
+-	$(eval override LF := -save-temps=obj -dumpdir $(voidwrap_obj))
++	$(eval override LF :=)
+ else
+ 	$(eval override LF :=)
+ endif
